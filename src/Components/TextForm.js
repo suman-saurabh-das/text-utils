@@ -18,6 +18,17 @@ export default function TextForm(props) {
         let lowercaseText = text.toLowerCase();
         setText(lowercaseText);
     }
+    const handleReadAloud = () => {
+        let readText = new SpeechSynthesisUtterance();
+        readText.text = text;
+        window.speechSynthesis.speak(readText);
+    }
+    const handleClearClick = () => {
+        setText("");
+    }
+
+    // Create a word count function using regEx
+    // Create a capitalise function to capitalise first letter of each line
 
     return (
     <>
@@ -28,10 +39,12 @@ export default function TextForm(props) {
             </div>
             <button className='btn btn-info me-2' onClick={handleUppercaseClick}>Convert to Uppercase</button>
             <button className='btn btn-info me-2' onClick={handleLowercaseClick}>Convert to Lowercase</button>
+            <button className='btn btn-info me-2' onClick={handleReadAloud}>Read Para</button>
+            <button className='btn btn-info me-2' onClick={handleClearClick}>Clear Text</button>
         </div>
         <div className="container my-3">
             <h2>Your text Summary</h2>
-            <p>{text.split(" ").length-1} words and {text.length} characters</p>
+            <p>{text.split(" ").length} words || {text.length} characters || {text.split(".").length-1 } sentences </p>
             <p>{0.008 * (text.split(" ").length)} Minutes read</p>
             <h2>Preview</h2>
             <p>{text}</p>
