@@ -25,10 +25,12 @@ export default function TextForm(props) {
     const handleUppercase = () => {
         let uppercaseText = text.toUpperCase();
         setText(uppercaseText);
+        props.showAlert("Successfully converted to uppercase", "info");
     }
     const handleLowercase = () => {
         let lowercaseText = text.toLowerCase();
         setText(lowercaseText);
+        props.showAlert("Successfully converted to lowercase", "info");
     }
     const handleCopy = () => {
         let textFormId = document.getElementById("myTextBox");
@@ -36,6 +38,7 @@ export default function TextForm(props) {
         // textFormId.select(); // Redundant (no need to select the text inside input)
         // https://developer.mozilla.org/en-US/docs/Web/API/Clipboard/writeText
         navigator.clipboard.writeText(textFormId.value);
+        props.showAlert("Successfully copied to clipboard", "info");
     }
     const handleRemoveExtraSpace = () => {
         // Using RegEx, we are splitting the text into array whenever we encounter a space
@@ -43,14 +46,17 @@ export default function TextForm(props) {
         let newText = text.split(/[ ]+/);
         // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join
         setText(newText.join(" "));
+        props.showAlert("Successfully removed extra spaces", "info");
     }
     const handleReadAloud = () => {
         let readText = new SpeechSynthesisUtterance();
         readText.text = text;
         window.speechSynthesis.speak(readText);
+        props.showAlert("Reading Aloud", "info");
     }
     const handleClear = () => {
         setText("");
+        props.showAlert("Text area cleared", "info")
     }
     const handleCapitalizeClick = () => {
         let sentenceArray = text.split(".");
@@ -62,6 +68,7 @@ export default function TextForm(props) {
                 sentenceArray[i] = sentence.charAt(1).toUpperCase() + sentence.substring(2);
         }
         setText(sentenceArray.join(". "));
+        props.showAlert("First word of every sentence is capitalized", "info");
     }
 
     // Create a word count function using regEx (done)
@@ -74,13 +81,13 @@ export default function TextForm(props) {
             <div className="mb-3">
                 <textarea className="form-control" id="myTextBox" rows="8" value={text} onChange={handleOnChange} placeholder="Enter your text here" style={{backgroundColor: props.mode==="dark"?"#031633":"white", color: props.mode==="dark"?"white":"black"}}></textarea>
             </div>
-            <button className='btn btn-info me-2' onClick={handleUppercase}>Convert to Uppercase</button>
-            <button className='btn btn-info me-2' onClick={handleLowercase}>Convert to Lowercase</button>
-            <button className='btn btn-info me-2' onClick={handleCapitalizeClick}>Capitalise first letter</button>
-            <button className='btn btn-info me-2' onClick={handleCopy}>Copy Text</button>
-            <button className='btn btn-info me-2' onClick={handleRemoveExtraSpace}>Remove extra spaces</button>
-            <button className='btn btn-info me-2' onClick={handleReadAloud}>Read Para</button>
-            <button className='btn btn-info me-2' onClick={handleClear}>Clear Text</button>
+            <button className='btn btn-info me-2 my-2' onClick={handleUppercase}>Convert to Uppercase</button>
+            <button className='btn btn-info me-2 my-2' onClick={handleLowercase}>Convert to Lowercase</button>
+            <button className='btn btn-info me-2 my-2' onClick={handleCapitalizeClick}>Capitalise first letter</button>
+            <button className='btn btn-info me-2 my-2' onClick={handleCopy}>Copy Text</button>
+            <button className='btn btn-info me-2 my-2' onClick={handleRemoveExtraSpace}>Remove extra spaces</button>
+            <button className='btn btn-info me-2 my-2' onClick={handleReadAloud}>Read Para</button>
+            <button className='btn btn-info me-2 my-2' onClick={handleClear}>Clear Text</button>
         </div>
         <div className="container my-3" style={{color: props.mode==="dark"?"white":"black"}}>
             <h2>Your text Summary</h2>

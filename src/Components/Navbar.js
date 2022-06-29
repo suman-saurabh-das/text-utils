@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 export default function Navbar(props) {
     return (
+        // Using template literal so that we can pass props as a variable for classNames
         <nav className={`navbar navbar-expand-lg navbar-${props.mode} bg-${props.mode}`}>
             <div className="container-fluid">
                 <a className="navbar-brand" href="/">{props.title}</a>
@@ -24,11 +25,11 @@ export default function Navbar(props) {
                         <button className="btn btn-info" type="submit">Search</button>
                     </form> */}
 
-                    {/* Changing color of switch label based on the value od prop mode*/}
+                    {/* Changing color of switch label based on the value of prop mode */}
                     <div className={`form-check form-switch text-${props.mode==="light"?"dark":"light"}`}>
                         <input className="form-check-input" onClick={props.toggleMode} type="checkbox" role="switch" id="flexSwitchCheckDefault"/>
                             {/* Here we are using JS to dynamically change the label text based on prop passed */}
-                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{`Enable ${props.mode} Mode`}</label>
+                            <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{`Enable ${props.mode==="light"?"dark":"light"} Mode`}</label>
                     </div>
                 </div>
             </div>
