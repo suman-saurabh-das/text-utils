@@ -74,27 +74,31 @@ export default function TextForm(props) {
     // Create a word count function using regEx (done)
     // Create a capitalise function to capitalise first letter of each line (done)
 
+    // Ailter for word count -> filter() method takes only those element from the array which have length greater than 0
+    // Filter method evaluates to true when element length !== 0 else false (Uing this we can filter out spaces)
+    // console.log(text.split(" ").filter((element) => {return element.length!==0}).length);
+
     return (
     <>
         <div className='container' style={{color: props.mode==="dark"?"white":"black"}}>
-            <h1>{props.heading}</h1>
+            <h1 className='mb-3'>{props.heading}</h1>
             <div className="mb-3">
                 <textarea className="form-control" id="myTextBox" rows="8" value={text} onChange={handleOnChange} placeholder="Enter your text here" style={{backgroundColor: props.mode==="dark"?"#031633":"white", color: props.mode==="dark"?"white":"black"}}></textarea>
             </div>
-            <button className='btn btn-info me-2 my-2' onClick={handleUppercase}>Convert to Uppercase</button>
-            <button className='btn btn-info me-2 my-2' onClick={handleLowercase}>Convert to Lowercase</button>
-            <button className='btn btn-info me-2 my-2' onClick={handleCapitalizeClick}>Capitalise first letter</button>
-            <button className='btn btn-info me-2 my-2' onClick={handleCopy}>Copy Text</button>
-            <button className='btn btn-info me-2 my-2' onClick={handleRemoveExtraSpace}>Remove extra spaces</button>
-            <button className='btn btn-info me-2 my-2' onClick={handleReadAloud}>Read Para</button>
-            <button className='btn btn-info me-2 my-2' onClick={handleClear}>Clear Text</button>
+            <button disabled={text.length === 0} className='btn btn-info me-2 my-2' onClick={handleUppercase}>Convert to Uppercase</button>
+            <button disabled={text.length === 0} className='btn btn-info me-2 my-2' onClick={handleLowercase}>Convert to Lowercase</button>
+            <button disabled={text.length === 0} className='btn btn-info me-2 my-2' onClick={handleCapitalizeClick}>Capitalise first letter</button>
+            <button disabled={text.length === 0} className='btn btn-info me-2 my-2' onClick={handleCopy}>Copy Text</button>
+            <button disabled={text.length === 0} className='btn btn-info me-2 my-2' onClick={handleRemoveExtraSpace}>Remove extra spaces</button>
+            <button disabled={text.length === 0} className='btn btn-info me-2 my-2' onClick={handleReadAloud}>Read Para</button>
+            <button disabled={text.length === 0} className='btn btn-info me-2 my-2' onClick={handleClear}>Clear Text</button>
         </div>
         <div className="container my-3" style={{color: props.mode==="dark"?"white":"black"}}>
             <h2>Your text Summary</h2>
             <p>{wordCount()} words || {text.length} characters || {text.split(".").length-1 } sentences </p>
             <p>{0.008 * wordCount()} Minutes read</p>
             <h2>Preview</h2>
-            <p>{text.length>0?text:"Enter something in the textbox to preview it here"}</p>
+            <p>{text.length>0?text:"Nothing to preview !"}</p>
         </div>
     </>
     )
