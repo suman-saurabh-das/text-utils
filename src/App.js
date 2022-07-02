@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import './App.css';   // Importing css file App.css
 import Alert from './Components/Alert';
-import About from './Components/About';
+// import About from './Components/About';
 import Navbar from './Components/Navbar';
 import TextForm from './Components/TextForm';
 
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  // Link
-} from "react-router-dom";
+// Removing all router components as it will create issues in Github pages
+// import {
+//   BrowserRouter as Router,
+//   Routes,
+//   Route,
+//   // Link
+// } from "react-router-dom";
 
 function App() {
 
@@ -45,16 +46,17 @@ function App() {
 
   return (
     <>
-      <Router>
+      {/* <Router> */}
         <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} />
         <Alert alert={alert} />  {/* Passing state variable alert as a prop */}
         <div className="container my-3">
-          <Routes>
-            <Route exact path='/about' element={<About/>}></Route>
-            <Route exact path='/' element={<TextForm heading="Enter the text below to analyze" mode={mode} showAlert={showAlert}/>}></Route>
-          </Routes>
+          {/* <Routes> */}
+            {/* <Route exact path='/about' element={<About/>}></Route> */}
+            {/* <Route exact path='/' element={<TextForm heading="Enter the text below to analyze" mode={mode} showAlert={showAlert}/>}></Route> */}
+            <TextForm heading="Enter the text below to analyze" mode={mode} showAlert={showAlert}/>
+          {/* </Routes> */}
         </div>
-      </Router>
+      {/* </Router> */}
     </>
   );
 }
