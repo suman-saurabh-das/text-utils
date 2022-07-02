@@ -34,6 +34,9 @@ export default function Navbar(props) {
                             {/* Here we are using JS to dynamically change the label text based on prop passed */}
                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{`Enable ${props.mode==="light"?"dark":"light"} Mode`}</label>
                     </div>
+
+                    {/* Sending value from Navbar.js to App.js */}
+                    <button type='button' className='btn btn-danger ms-2' onClick={() => {props.getValueFromComponent("nav bar value")}}>Send Data to App</button>
                 </div>
             </div>
         </nav>

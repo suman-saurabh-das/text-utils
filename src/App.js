@@ -44,10 +44,14 @@ function App() {
     }, 1500);
   }
 
+  const getValueFromComponent = (componentValue) => {
+    console.log(componentValue);
+  }
+
   return (
     <>
       <Router>
-        <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} />
+        <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} getValueFromComponent={getValueFromComponent}/>
         <Alert alert={alert} />  {/* Passing state variable alert as a prop */}
         <div className="container my-3">
           <Routes>
