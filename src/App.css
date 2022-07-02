@@ -1,0 +1,16 @@
+.custom-theme-btn-container{
+    display: inline;
+    padding: 1rem 0;
+}
+
+.custom-theme-btn-circle{
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    width: 2rem; height: 2rem;
+}
+
+@media (max-width: 768px){
+    .custom-theme-btn-container{
+        display: block;
+    }
+}

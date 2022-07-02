@@ -79,16 +79,18 @@ export default function TextForm(props) {
         <div className='container' style={{color: props.mode==="dark"?"white":"black"}}>
             <h1>{props.heading}</h1>
             <div className="mb-3">
-                <textarea className="form-control" id="myTextBox" rows="8" value={text} onChange={handleOnChange} placeholder="Enter your text here" style={{backgroundColor: props.mode==="dark"?"#031633":"white", color: props.mode==="dark"?"white":"black"}}></textarea>
+                {/* Removed - backgroundColor: props.customColorChoosen */}
+                <textarea className="form-control" id="myTextBox" rows="8" value={text} onChange={handleOnChange} placeholder="Enter your text here" style={{backgroundColor: props.textAreaBg, color: props.mode==="dark"?"white":"black"}}></textarea>
             </div>
-            <button className='btn btn-info me-2 my-2' onClick={handleUppercase}>Convert to Uppercase</button>
-            <button className='btn btn-info me-2 my-2' onClick={handleLowercase}>Convert to Lowercase</button>
-            <button className='btn btn-info me-2 my-2' onClick={handleCapitalizeClick}>Capitalise first letter</button>
-            <button className='btn btn-info me-2 my-2' onClick={handleCopy}>Copy Text</button>
-            <button className='btn btn-info me-2 my-2' onClick={handleRemoveExtraSpace}>Remove extra spaces</button>
-            <button className='btn btn-info me-2 my-2' onClick={handleReadAloud}>Read Para</button>
-            <button className='btn btn-info me-2 my-2' onClick={handleClear}>Clear Text</button>
+            <button className={`btn btn-${props.customColorChoosen} me-2 my-2`} onClick={handleUppercase}>Convert to Uppercase</button>
+            <button className={`btn btn-${props.customColorChoosen} me-2 my-2`} onClick={handleLowercase}>Convert to Lowercase</button>
+            <button className={`btn btn-${props.customColorChoosen} me-2 my-2`} onClick={handleCapitalizeClick}>Capitalise first letter</button>
+            <button className={`btn btn-${props.customColorChoosen} me-2 my-2`} onClick={handleCopy}>Copy Text</button>
+            <button className={`btn btn-${props.customColorChoosen} me-2 my-2`} onClick={handleRemoveExtraSpace}>Remove extra spaces</button>
+            <button className={`btn btn-${props.customColorChoosen} me-2 my-2`} onClick={handleReadAloud}>Read Para</button>
+            <button className={`btn btn-${props.customColorChoosen} me-2 my-2`} onClick={handleClear}>Clear Text</button>
         </div>
+
         <div className="container my-3" style={{color: props.mode==="dark"?"white":"black"}}>
             <h2>Your text Summary</h2>
             <p>{wordCount()} words || {text.length} characters || {text.split(".").length-1 } sentences </p>
