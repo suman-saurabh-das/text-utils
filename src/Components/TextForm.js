@@ -9,7 +9,7 @@ export default function TextForm(props) {
 
     // Function to return number of words
     const wordCount = () => {
-        let wordArray = text.split(/[ ]+/);
+        let wordArray = text.split(/\s+/);
         let wordCount = 0;
         for(let i = 0; i < wordArray.length; i++){
             if(wordArray[i] === "");

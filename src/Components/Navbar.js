@@ -15,7 +15,7 @@ export default function Navbar(props) {
                 <div className="collapse navbar-collapse" id="navbar">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link active" to="/">Home</Link>
+                            <Link className="nav-link" to="/">Home</Link>
                             {/* <a className="nav-link active" href="#">Home</a> */}
                         </li>
                         <li className="nav-item">
@@ -34,9 +34,6 @@ export default function Navbar(props) {
                             {/* Here we are using JS to dynamically change the label text based on prop passed */}
                             <label className="form-check-label" htmlFor="flexSwitchCheckDefault">{`Enable ${props.mode==="light"?"dark":"light"} Mode`}</label>
                     </div>
-
-                    {/* Sending value from Navbar.js to App.js */}
-                    <button type='button' className='btn btn-danger ms-2' onClick={() => {props.getValueFromComponent("nav bar value")}}>Send Data to App</button>
                 </div>
             </div>
         </nav>
